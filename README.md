@@ -1,16 +1,61 @@
-# React + Vite
+# ISO 15939 Measurement Process Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web-based educational tool designed to simulate the **ISO/IEC 15939 Measurement Process** using the **ISO/IEC 25010 System and Software Quality Models**.
 
-Currently, two official plugins are available:
+This tool guides users through the full measurement lifecycle: from defining information needs to analyzing quantified results with visualizations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+The application follows a structured 4-step "Wizard" process:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1.  **Define (ISO 25010):**
+    * Select quality characteristics based on **ISO/IEC 25010** standard (Functional Suitability, Performance Efficiency, Security, etc.).
+    * Includes predefined case studies (IoT System, Healthcare, Mobile App).
+2.  **Plan:**
+    * Assign weights to selected quality dimensions.
+    * Validates that total weight equals 100% logic.
+3.  **Collect (ISO 25023):**
+    * Input simulated measurement data using **ISO/IEC 25023** standard metrics.
+    * Supports various unit types (ms, %, count, score).
+4.  **Analyze (ISO 15939):**
+    * **Radar Chart Visualization:** Compare performance across dimensions.
+    * **Gap Analysis:** Identify critical weaknesses.
+    * **Automated Recommendations:** Context-aware improvement suggestions based on low scores.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Framework:** React (Vite)
+* **Language:** JavaScript (ES6+)
+* **Styling:** Custom CSS (Modern Dashboard UI)
+* **Visualization:** Chart.js & React-Chartjs-2
+* **Standard Compliance:** ISO/IEC 15939, ISO/IEC 25010, ISO/IEC 25023
+
+## 📦 Installation & Usage
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/KULLANICI_ADIN/iso-simulator.git](https://github.com/KULLANICI_ADIN/iso-simulator.git)
+    cd iso-simulator
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open in browser:**
+    Visit `http://localhost:5173` to start the simulation.
+
+## 📚 References
+
+* **ISO/IEC 15939:** Systems and software engineering — Measurement process.
+* **ISO/IEC 25010:2011:** Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models.
+* **ISO/IEC 25023:2016:** Measurement of system and software product quality.
+
+---
+Developed as a Software Quality Assurance project.
