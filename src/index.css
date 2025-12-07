@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* HEADER */
+h1.app-title {
+  text-align: center; color: #2c5282; font-size: 2.5em; margin-bottom: 10px; font-weight: bold;
+}
+p.app-subtitle {
+  text-align: center; color: #718096; font-size: 1.1em; margin-bottom: 50px;
+}
+
+/* STEP INDICATOR */
+.step-indicator {
+  display: flex; justify-content: space-between; margin-bottom: 50px; position: relative; max-width: 800px; margin-left: auto; margin-right: auto;
+}
+.step-indicator::before {
+  content: ''; position: absolute; top: 24px; left: 40px; right: 40px; height: 2px; background: #e2e8f0; z-index: 0;
+}
+.step {
+  display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; z-index: 1;
+}
+.step-circle {
+  width: 50px; height: 50px; border-radius: 50%; background: #cbd5e0; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; margin-bottom: 10px; transition: all 0.3s ease;
+}
+.step.active .step-circle { background: #4c51bf; box-shadow: 0 0 0 5px rgba(76, 81, 191, 0.2); }
+.step.completed .step-circle { background: #48bb78; }
+.step-label { font-size: 0.9em; font-weight: 600; color: #a0aec0; }
+.step.active .step-label { color: #2d3748; }
+
+/* CONTENT AREA */
+.content-area {
+  background: white; border-radius: 12px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); min-height: 400px;
+}
+.section-title { font-size: 1.8em; color: #2d3748; margin-bottom: 10px; font-weight: bold; }
+.section-subtitle { color: #718096; margin-bottom: 30px; font-size: 1.05em; }
+
+/* --- STEP 1: DEFINE (KARTLAR) --- */
+.case-study-container {
+  background: linear-gradient(135deg, #f0e7ff 0%, #e0f2fe 100%); border: 2px solid #c4b5fd; border-radius: 12px; padding: 25px; margin-bottom: 30px;
+}
+.case-study-title { font-size: 1.2em; font-weight: 600; color: #2d3748; margin-bottom: 20px; }
+.case-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+.case-card {
+  background: white; border: 2px solid #c4b5fd; border-radius: 8px; padding: 20px; cursor: pointer; transition: all 0.2s;
+}
+.case-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15); }
+.case-card.selected { border-color: #4c51bf; background: #eef2ff; }
+.case-card-title { font-weight: 600; color: #2d3748; margin-bottom: 8px; }
+.case-card-desc { font-size: 0.85em; color: #718096; line-height: 1.5; margin-bottom: 10px; }
+.case-card-info { font-size: 0.8em; color: #4c51bf; font-weight: 600; }
+
+.dimension-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+.dimension-card {
+  border: 2px solid #e2e8f0; border-radius: 10px; padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.2s;
+}
+.dimension-card:hover { border-color: #c4b5fd; }
+.dimension-card.selected { border-color: #4c51bf; background: #eef2ff; }
+.dimension-info h3 { color: #2d3748; font-size: 1.1em; margin-bottom: 5px; }
+.dimension-info p { color: #718096; font-size: 0.9em; }
+.check-icon {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid #cbd5e0; display: flex; align-items: center; justify-content: center; color: #cbd5e0; font-weight: bold;
+}
+.dimension-card.selected .check-icon { background: #4c51bf; border-color: #4c51bf; color: white; }
+
+/* --- STEP 2: PLAN (WEIGHTS) --- */
+.weight-list { display: flex; flexDirection: column; gap: 15px; margin-top: 30px; }
+.weight-item {
+  background: #f7fafc; border-radius: 8px; padding: 20px; display: flex; align-items: center; gap: 20px; justify-content: space-between;
+}
+.weight-label { flex: 1; font-weight: 600; color: #2d3748; }
+.weight-input-group { display: flex; align-items: center; gap: 10px; }
+.weight-input {
+  width: 80px; padding: 10px; border: 2px solid #e2e8f0; border-radius: 6px; font-size: 1em; text-align: center;
+}
+.weight-percent { font-weight: 600; color: #718096; }
+
+.total-weight {
+  background: #d4edda; border: 2px solid #c3e6cb; border-radius: 8px; padding: 20px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center;
+}
+.total-weight.error { background: #fff5f5; border-color: #feb2b2; }
+.total-weight-text { font-weight: bold; color: #155724; font-size: 1.1em; }
+.total-weight.error .total-weight-text { color: #c53030; }
+.total-weight-value { color: #28a745; font-size: 1.3em; font-weight: bold; }
+.total-weight.error .total-weight-value { color: #e53e3e; }
+
+/* NAVIGATION */
+.navigation { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0; }
+.nav-btn { background: #4c51bf; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+.nav-btn:hover { background: #434190; }
+.nav-btn:disabled { background: #cbd5e0; cursor: not-allowed; }
+.nav-info { background: #f7fafc; padding: 8px 20px; border-radius: 20px; font-weight: 600; color: #4a5568; }
+/* --- STEP 3: COLLECT (METRICS) --- */
+.metrics-container { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
+
+.metric-dimension { 
+  border: 1px solid #e2e8f0; border-radius: 10px; padding: 25px; background: white;
+}
+
+.metric-dimension-title { 
+  font-size: 1.4em; color: #2c5282; font-weight: bold; margin-bottom: 20px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;
+}
+
+.metric-items { display: flex; flex-direction: column; gap: 15px; }
+
+.metric-item { 
+  background: #f7fafc; border-radius: 8px; padding: 18px; border: 1px solid #e2e8f0;
+}
+
+.metric-row { 
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 10px;
+}
+
+.metric-name { font-weight: 600; color: #2d3748; font-size: 1.05em; }
+.metric-desc { color: #718096; font-size: 0.9em; margin-bottom: 8px; }
+
+.metric-input-row { display: flex; align-items: center; gap: 10px; }
+
+.metric-input { 
+  width: 120px; padding: 8px 12px; border: 2px solid #cbd5e0; border-radius: 6px; font-size: 1em; text-align: right;
+}
+.metric-input:focus { outline: none; border-color: #4c51bf; box-shadow: 0 0 0 3px rgba(76, 81, 191, 0.1); }
+
+.metric-unit { font-weight: 600; color: #718096; min-width: 40px; }
+
+.metric-info { 
+  display: flex; gap: 10px; font-size: 0.85em; color: #718096; margin-top: 5px; align-items: center;
+}
+
+.inverse-badge { 
+  background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8em;
+}
+/* --- STEP 4: ANALYZE (RESULTS) --- */
+
+/* Izgara Yapısı (Grid Layout) */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Yan yana 2 kutu sığsın */
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* 1. Genel Skor Kartı (Mor Alan) */
+.result-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 30px;
+  grid-column: 1 / -1; /* Tüm satırı kapla */
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.result-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  opacity: 0.95;
+  color: white;
+}
+
+.result-score {
+  font-size: 4.5em;
+  font-weight: bold;
+  margin: 10px 0;
+  line-height: 1;
+}
+
+.result-rating {
+  font-size: 1.4em;
+  font-weight: 600;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+/* 2. Radar Grafiği Kutusu */
+.radar-chart {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+}
+
+.chart-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+  border-bottom: 2px solid #f7fafc;
+  padding-bottom: 10px;
+}
+
+/* 3. Gap Analysis (Zayıf Yönler) Listesi */
+.gap-analysis {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.gap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f7fafc;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border-left: 4px solid transparent;
+  transition: transform 0.2s;
+}
+
+.gap-item:hover {
+  transform: translateX(5px);
+}
+
+.gap-item.critical {
+  background: #fff5f5;
+  border-left-color: #fc8181;
+}
+
+.gap-item.moderate {
+  background: #fffbeb;
+  border-left-color: #f6e05e;
+}
+
+.gap-name {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1.1em;
+}
+
+.gap-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.gap-badge.critical {
+  background: #feb2b2;
+  color: #9b2c2c;
+}
+
+.gap-badge.moderate {
+  background: #fefcbf;
+  color: #975a16;
+}
+
+.gap-score {
+  text-align: right;
+}
+
+.gap-score-value {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.gap-score-diff {
+  font-size: 0.85em;
+  color: #e53e3e;
+  font-weight: 600;
+}
+
+/* 4. Öneriler (Recommendations) */
+.recommendations {
+  background: #eef2ff;
+  border: 2px solid #c7d2fe;
+  border-radius: 12px;
+  padding: 30px;
+  grid-column: 1 / -1; /* Tüm satırı kapla */
+}
+
+.recommendation-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  align-items: flex-start;
+}
+
+.recommendation-item:last-child {
+  margin-bottom: 0;
+}
+
+.rec-number {
+  font-weight: bold;
+  color: #4c51bf;
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.rec-text {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 1.05em;
+}
