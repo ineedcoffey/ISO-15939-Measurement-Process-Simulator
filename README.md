@@ -34,7 +34,7 @@ The application follows a structured 4-step "Wizard" process:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/KULLANICI_ADIN/iso-simulator.git](https://github.com/KULLANICI_ADIN/iso-simulator.git)
+    git clone https://github.com/ineedcoffey/ISO-15939-Measurement-Process-Simulator.git
     cd iso-simulator
     ```
 
